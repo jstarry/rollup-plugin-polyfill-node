@@ -9,6 +9,7 @@ const PREFIX = `\0polyfill-node:`;
 const PREFIX_LENGTH = PREFIX.length;
 
 export interface NodePolyfillsOptions {
+  enable?: Array<string>,
   baseDir?: string;
   sourceMap?: boolean;
   include?: Array<string | RegExp> | string | RegExp | null;
@@ -16,7 +17,7 @@ export interface NodePolyfillsOptions {
 }
 
 export default function (opts: NodePolyfillsOptions = {}) {
-  const mods = getModules();
+  const mods = getModules(opts.enable);
   const injectPlugin = inject({
     include: opts.include === undefined ? ['node_modules/**/*.js'] : opts.include,
     exclude: opts.exclude,
