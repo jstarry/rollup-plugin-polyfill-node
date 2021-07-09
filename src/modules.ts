@@ -10,7 +10,7 @@ function addModule(libs: Map<string, any>, enable: Array<string> | undefined, na
 export function getModules(enable?: Array<string>) {
   const libs = new Map();
 
-  addModule(libs, enable, 'process', POLYFILLS['process-es6.js']);
+  libs.set('process', POLYFILLS['process-es6.js']);
   addModule(libs, enable, 'global', POLYFILLS['global.js']);
   addModule(libs, enable, 'buffer', POLYFILLS['buffer-es6.js']);
   addModule(libs, enable, 'util', POLYFILLS['util.js']);
@@ -32,7 +32,7 @@ export function getModules(enable?: Array<string>) {
   addModule(libs, enable, '_stream_readable', POLYFILLS['__readable-stream/readable.js']);
   addModule(libs, enable, '_stream_writable', POLYFILLS['__readable-stream/writable.js']);
   addModule(libs, enable, '_stream_transform', POLYFILLS['__readable-stream/transform.js']);
-  addModule(libs, enable, '_inherits', POLYFILLS['inherits.js']);
+  libs.set('_inherits', POLYFILLS['inherits.js']);
   addModule(libs, enable, '_buffer_list', POLYFILLS['__readable-stream/buffer-list.js']);
   addModule(libs, enable, 'timers', POLYFILLS['timers.js']);
   addModule(libs, enable, 'console', POLYFILLS['console.js']);
